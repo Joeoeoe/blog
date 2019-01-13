@@ -176,4 +176,10 @@ def edit_blog_view(request):
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def test_view(request):
-    return Response({'code': 200})
+    person = request.data['person']
+    dress = request.data['dress']
+    if person == "鸡哥" and dress == "小裙子":
+        return Response({'code': 200, 'msg': 'Bingo!'})
+    else:
+        return Response({'code': 404, 'msg': 'Forbidden！'})
+
